@@ -30,9 +30,10 @@ if [[ $error == true ]]; then
 elif (( ${#filesToPlot[@]} >= 1 )); then
     for file in "${filesToPlot[@]}"; do
         if [[ $file =~ $regexConfigurationDetection ]]; then
+            echo  "======================================================="
             echo "Plot configuration found: ${BASH_REMATCH[1]}${BASH_REMATCH[2]}_${BASH_REMATCH[3]}_${BASH_REMATCH[4]}_${BASH_REMATCH[5]}"
-            ./mdcct/plotavx2 -k ${BASH_REMATCH[2]} -x 2 -d "${BASH_REMATCH[1]}" -s ${BASH_REMATCH[3]} -n ${BASH_REMATCH[4]} -m ${BASH_REMATCH[5]} -t 2 &
-            echo  "-------------------------------------------------------"
+            ./mdcct/plotavx2 -k ${BASH_REMATCH[2]} -x 1 -d "${BASH_REMATCH[1]}" -s ${BASH_REMATCH[3]} -n ${BASH_REMATCH[4]} -m ${BASH_REMATCH[5]} -t 2 &
+            echo  "======================================================="
         fi
     done
     wait
