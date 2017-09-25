@@ -1,14 +1,19 @@
 FROM centos:latest
 MAINTAINER Administator email: czijonny@gmail.com
 
-RUN yum install -y git make gcc
-
-RUN git clone https://github.com/Mirkic7/mdcct.git
-WORKDIR /mdcct
-RUN make
-
-WORKDIR /
 COPY plot /
-RUN chmod +x plot
+
+RUN yum install -y git make gcc \
+
+    && git clone https://github.com/Mirkic7/mdcct.git \
+    && cd /mdcct \
+    && make \
+
+    && yum erase -y git make gcc \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
+
+    && cd / \
+    && chmod +x plot
 
 ENTRYPOINT /bin/bash plot
