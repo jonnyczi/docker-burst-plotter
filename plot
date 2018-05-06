@@ -2,8 +2,8 @@
 
 filesToPlot=()
 error=false
-regexConfigurationDetectionSearch='^(.*/){1}([0-9]{18})_([0-9]+)_([0-9]+)_([0-9]+)\..+$'
-regexConfigurationDetection='^(.*/){1}([0-9]{18})_([0-9]+)_([0-9]+)_([0-9]+)$'
+regexConfigurationDetectionSearch='^(.*/){1}([0-9]{18,})_([0-9]+)_([0-9]+)_([0-9]+)\..+$'
+regexConfigurationDetection='^(.*/){1}([0-9]{18,})_([0-9]+)_([0-9]+)_([0-9]+)$'
 
 while IFS= read -d $'\0' -r file; do
     if [[ -d $file ]]; then
